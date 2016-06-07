@@ -10,16 +10,16 @@
     }
 
     $onInit() {
-      this.$http.get('/api/things')
+      this.$http.get('/api/crawler')
         .then(response => {
           this.awesomeThings = response.data;
         });
     }
   }
 
-  angular.module('webCrawlerApp')
+  /*angular.module('webCrawlerApp')
     .component('main', {
       templateUrl: 'app/main/main.html',
       controller: MainController
-    });
+    });*/
 })();
