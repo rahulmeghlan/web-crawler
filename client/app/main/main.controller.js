@@ -1,25 +1,12 @@
 'use strict';
+angular.module("webCrawlerApp").controller("MainController", ['$scope', 'MainService', function($scope, mainService){
 
-(function() {
-
-  class MainController {
-
-    constructor($http) {
-      this.$http = $http;
-      this.awesomeThings = [];
-    }
-
-    $onInit() {
-      this.$http.get('/api/crawler')
-        .then(response => {
-          this.awesomeThings = response.data;
-        });
-    }
+  function init(){
+    mainService.getLinks().then(function(res){
+        console.log("Res : ", res);
+    })
   }
 
-  /*angular.module('webCrawlerApp')
-    .component('main', {
-      templateUrl: 'app/main/main.html',
-      controller: MainController
-    });*/
-})();
+  init();
+
+}]);

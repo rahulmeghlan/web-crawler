@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('webCrawlerApp', ['webCrawlerApp.constants', 'ngCookies', 'ngResource', 'ngSanitize',
-    'ui.router', 'ui.bootstrap'
-  ])
+angular.module('webCrawlerApp', ['ui.router'])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
 

@@ -7,5 +7,6 @@
 
 // Gets a list of Things
 export function index(req, res) {
+  console.log("Req", req);
   res.json([]);
 }
