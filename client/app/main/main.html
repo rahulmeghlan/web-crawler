@@ -1,18 +1,38 @@
-<!--<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
--->
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
-        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
+    <div class="col-lg-6">
+      <label for="web-crawl-url">Find links on : </label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="web-crawl-url" placeholder="Search links on..." ng-model="crawlUrl"/>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" ng-click="validateAndCrawl()">Go!</button>
+        </span>
+      </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+  </div><!-- /.row -->
+  <div class="row"x`>
+    <h5 class="col-lg-6">Searching links on : {{crawlUrl}}</h5>
+  </div>
+
+  <div class="row">
+    <div class="panel panel-default col-md-5">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Absolute Urls</div>
+      <!-- Table -->
+      <table class="table table-hover">
+        <tbody>
+          <tr ng-repeat="url in absUrls track by $index">
+            <td><a ng-href="url" alt="{{url}}">{{url}}</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel panel-default col-md-5 col-md-offset-2">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Relative Urls</div>
+      <!-- Table -->
+      <table class="table">
+      </table>
     </div>
   </div>
 </div>
