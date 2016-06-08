@@ -1,10 +1,18 @@
 'use strict';
 angular.module("webCrawlerApp").controller("MainController", ['$scope', 'MainService', function($scope, mainService){
+  $scope.fetchUrls = function(){
+    mainService.getLinks($scope.initUrl).then(function(res){
+      console.log("Res : ", res);
+    })
+  };
+
+  function initScope(){
+    $scope.initUrl = "http://www.python.org";
+  }
 
   function init(){
-    mainService.getLinks().then(function(res){
-        console.log("Res : ", res);
-    })
+    initScope();
+    $scope.fetchUrls();
   }
 
   init();

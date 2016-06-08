@@ -3,8 +3,10 @@ angular.module("webCrawlerApp").service("MainService", ["$http", function($http)
   /**
   * @description : Make BE call to fetch urls
   */
-  self.getLinks = function(){
-    return $http.get("/api/crawler")
+  self.getLinks = function(url){
+    return $http.get("/api/crawler", {
+      params: {url: url}
+    })
   }
 
 }]);
