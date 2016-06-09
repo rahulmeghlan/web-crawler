@@ -5,34 +5,30 @@
       <div class="input-group">
         <input type="text" class="form-control" id="web-crawl-url" placeholder="Search links on..." ng-model="crawlUrl"/>
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button" ng-click="validateAndCrawl()">Go!</button>
+          <button class="btn btn-default" type="button" ng-click="resetSearch()">Go!</button>
         </span>
       </div><!-- /input-group -->
     </div><!-- /.col-lg-6 -->
   </div><!-- /.row -->
-  <div class="row"x`>
+
+  <div class="row" ng-class="{'new-search': newSearch}">
     <h5 class="col-lg-6">Searching links on : {{crawlUrl}}</h5>
   </div>
 
+  <hr />
   <div class="row">
-    <div class="panel panel-default col-md-5">
+    <div class="panel panel-default col-md-3" ng-class="{'col-md-offset-1' : $index > 0}" ng-repeat="(key, value) in resultsTables track by $index">
       <!-- Default panel contents -->
-      <div class="panel-heading">Absolute Urls</div>
+      <div class="panel-heading">Absolute Urls : {{crawlUrl}}</div>
       <!-- Table -->
       <table class="table table-hover">
         <tbody>
-          <tr ng-repeat="url in absUrls track by $index">
-            <td><a ng-href="url" alt="{{url}}">{{url}}</a></td>
+          <tr ng-repeat="url in absUrls[key] track by $index">
+            <td class="result-links"><a ng-href="url" ng-class="{'crawled-link' : crawledUrls.indexOf(url) !== -1}">{{url}}</a></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="panel panel-default col-md-5 col-md-offset-2">
-      <!-- Default panel contents -->
-      <div class="panel-heading">Relative Urls</div>
-      <!-- Table -->
-      <table class="table">
-      </table>
-    </div>
+
   </div>
 </div>
