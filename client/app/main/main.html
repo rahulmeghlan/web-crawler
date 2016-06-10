@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-md-6">
       <label for="web-crawl-url">Find links on : </label>
       <div class="input-group">
         <input type="text" class="form-control" id="web-crawl-url" placeholder="Search links on..." ng-model="crawlUrl" ng-disabled="searchInProgress"/>
@@ -9,6 +9,14 @@
         </span>
       </div><!-- /input-group -->
     </div><!-- /.col-lg-6 -->
+    <div class="col-md-6">
+      <label for="numLinks">Select number of links to crawl : </label>
+      <div class="input-group">
+        <select id="numLinks" ng-model="maxDepth" ng-change="validateAndCrawl()">
+          <option ng-repeat="i in [4,5,6]" value="{{i}}">{{i}}</option>
+        </select>
+      </div>
+    </div>
   </div><!-- /.row -->
 
   <div class="row" ng-class="{'new-search': newSearch}">

@@ -11,7 +11,7 @@ angular.module("webCrawlerApp").controller("MainController", ['$scope', 'MainSer
     if(validUrlPattern.test($scope.crawlUrl)){
       mainService.getLinks($scope.crawlUrl).then(function(res){
         if(res.data.success){
-          if(index < 3){
+          if(index < parseInt($scope.maxDepth)){
             $scope.resultsTables.push(index);
             $scope.absUrls[index] = res.data.success.absUrls
             $scope.crawlUrl = $scope.absUrls[subIndex][index];
@@ -19,8 +19,8 @@ angular.module("webCrawlerApp").controller("MainController", ['$scope', 'MainSer
             $scope.validateAndCrawl();
             index++;
           }else{
-            $scope.crawlUrl = "";
-            $scope.crawledUrls.splice($scope.crawledUrls.length-1, 1);
+            // $scope.crawlUrl = "";
+            // $scope.crawledUrls.splice($scope.crawledUrls.length-1, 1);
             $scope.searchInProgress = false;
           }
         }else{
@@ -31,6 +31,7 @@ angular.module("webCrawlerApp").controller("MainController", ['$scope', 'MainSer
       alert("Enter a valid url !");
     }
   };
+
   /**
   * @description : This function is used to search a custom url
   */
@@ -59,6 +60,7 @@ angular.module("webCrawlerApp").controller("MainController", ['$scope', 'MainSer
     $scope.searchInProgress = true;
     $scope.crawlUrl = "http://www.python.org";
     $scope.crawledUrls = [$scope.crawlUrl];
+    $scope.maxDepth = 3;
     $scope.validateAndCrawl();
   }
   /**
