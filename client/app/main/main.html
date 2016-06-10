@@ -3,9 +3,9 @@
     <div class="col-lg-6">
       <label for="web-crawl-url">Find links on : </label>
       <div class="input-group">
-        <input type="text" class="form-control" id="web-crawl-url" placeholder="Search links on..." ng-model="crawlUrl"/>
+        <input type="text" class="form-control" id="web-crawl-url" placeholder="Search links on..." ng-model="crawlUrl" ng-disabled="searchInProgress"/>
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button" ng-click="resetSearch()">Go!</button>
+          <button class="btn btn-default" type="button" ng-click="resetSearch()" ng-disabled="searchInProgress">Go!</button>
         </span>
       </div><!-- /input-group -->
     </div><!-- /.col-lg-6 -->
@@ -19,12 +19,12 @@
   <div class="row">
     <div class="panel panel-default col-md-3" ng-class="{'col-md-offset-1' : $index > 0}" ng-repeat="(key, value) in resultsTables track by $index">
       <!-- Default panel contents -->
-      <div class="panel-heading">Absolute Urls : {{crawlUrl}}</div>
+      <div class="panel-heading">Absolute Urls In : {{crawledUrls[$index]}}</div>
       <!-- Table -->
       <table class="table table-hover">
         <tbody>
           <tr ng-repeat="url in absUrls[key] track by $index">
-            <td class="result-links"><a ng-href="url" ng-class="{'crawled-link' : crawledUrls.indexOf(url) !== -1}">{{url}}</a></td>
+            <td class="result-links"><a ng-href="{{url}}" ng-class="{'crawled-link' : crawledUrls.indexOf(url) !== -1}">{{url}}</a></td>
           </tr>
         </tbody>
       </table>
