@@ -1,6 +1,8 @@
 # web-crawler
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.7.5.
+The web-crawler project crawls on a user entered url and fetches the links from that url and displays the result in tables.
+It crawls the first url from the response and fetches links from it and displaysit in tables.
+This process continues selected number of times. 
 
 ## Getting Started
 
@@ -22,9 +24,5 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 ## Build & development
 
-Run `grunt build` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `npm test` will run the unit tests with karma.
+Run `grunt serve` for preview.
 
