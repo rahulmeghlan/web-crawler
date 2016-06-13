@@ -20,7 +20,6 @@ export function index(req, res) {
 
     if(response.statusCode === 200){
       var $ = cheerio.load(body);
-      console.log(collectInternalLinks($))
       data.success = collectInternalLinks($);
     }
     res.json(data);
